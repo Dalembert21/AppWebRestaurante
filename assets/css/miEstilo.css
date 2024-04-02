@@ -1,0 +1,82 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url(../imagenes/fondoLogin.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.centroLoginS {
+  position: relative;
+  max-width: 400px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(55px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem;
+}
+
+.cuadrosSesion input {
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0 35px 0 5px;
+  color: #fff;
+}
+
+.cuadrosSesion {
+  position: relative;
+  margin: 30px 0;
+  max-width: 310px;
+  border-bottom: 2px solid #fff;
+}
+.cuadrosSesion label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.cuadrosSesion input:focus ~ label,
+.cuadrosSesion input:valid ~ label {
+  top: -5px; /* Mueve el label arriba cuando el campo tiene foco o contenido válido */
+}
+
+.cuadrosSesion input:not(:focus):not(:placeholder-shown) ~ label {
+  top: -5px; /* Mueve el label arriba cuando el campo tiene contenido */
+}
+
+.tituloLogin {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+}
+.iniciarSesion {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  background-color: rgb(255, 255, 255, 1);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+.iniciarSesion:hover {
+  background-color: rgb(255, 255, 255, 0.5);
+}
