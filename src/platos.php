@@ -18,7 +18,90 @@ class Platos{
         }
     }
 
+    public function registrar($_params){
+        $sql = "INSERT INTO `platos`(`TITU_PLA`, `DESC_PLA`, `FOT_PLA`, `PRE_PLA`, `CAT_ID_PER`, `FECHA`) VALUES (:TITU_PLA, :DESC_PLA, :FOT_PLA, :PRE_PLA, :CAT_ID_PER, :FECHA)";
 
+        $resultado = $this->cn->prepare($sql);
+        $_array = array(":TITU_PLA" =>$_params['TITULO_PLA'],
+        ":DESC_PLA" => $_params['DESC_PLA'], 
+        ":FOT_PLA" => $_params['FOT_PLA'],
+         ":PRE_PLA"=> $_params['PRE_PLA'],
+          ":CAT_ID_PER"=> $_params['CAT_ID_PER'], 
+          ":FECHA" =>$_params['FECHA']
+
+
+        );
+
+        if($resultado->execute($_array)){
+          return true;
+        }else{
+          print("Tuve un error para registrar el plato");
+          return false;
+        }
+
+    }
+
+    public function actualizar($_params){
+       $sql = "UPDATE `platos` SET `TITU_PLA`=:TITU_PLA,`DESC_PLA`=:DESC_PLA,`FOT_PLA`=:FOT_PLA,`PRE_PLA`=:PRE_PLA,`CAT_ID_PER`=:CAT_ID_PER,`FECHA`=:FECHA WHERE `ID_PLA `=:ID_PLA";
+
+        $resultado = $this->cn->prepare($sql);
+        $_array = array(":TITU_PLA" =>$_params['TITULO_PLA'],
+        ":DESC_PLA" => $_params['DESC_PLA'], 
+        ":FOT_PLA" => $_params['FOT_PLA'],
+         ":PRE_PLA"=> $_params['PRE_PLA'],
+          ":CAT_ID_PER"=> $_params['CAT_ID_PER'], 
+          ":FECHA" =>$_params['FECHA'],
+          ":ID_PLA"=> $_params['ID_PLA']
+        
+        );
+
+        if($resultado->execute($_array)){
+          return true;
+        }else{
+          print("Tuve un error para actualizar el plato");
+          return false;
+        }
+    }
+public function eliminar($id){
+  $sql =  "DELETE FROM `platos` WHERE `ID_PLA`=:ID_PLA";
+   $resultado = $this->cn->prepare($sql);
+        $_array = array(
+          ":ID_PLA"=> $_params['ID_PLA']
+        
+        );
+
+        if($resultado->execute($_array)){
+          return true;
+        }else{
+          print("Tuve un error para actualizar el plato");
+          return false;
+        }
+}
+
+public function ver(){
+    $sql =  " SELECT  ID_PLA, TITU_PLA, DESC_PLA, FOT_PLA,NOM_CAT, PRE_PLA,FECHA,EST_PLA FROM platos INNER JOIN categorias ON platos.CAT_ID_PER = categorias.ID_CAT ORDER BY platos.ID_PLA DESC";
+   $resultado = $this->cn->prepare($sql);
+        if($resultado->execute()){
+          return $resultado->fetchAll();
+        }else{
+          print("UPS!! sucedio algun error para traer datos");
+          return false;
+        }
+}
+public function verPorId($ID_PLA){
+    $sql =  " SELECT * FROM `platos` WHERE `platos`= ID_PLA ";
+   $resultado = $this->cn->prepare($sql);
+           $_array = array(
+          ":ID_PLA"=> $_params['ID_PLA']
+        
+        );
+        if($resultado->execute($_array)){
+          return $resultado->fetch();
+        }else{
+          print("UPS!! sucedio algun error para traer datos");
+          return false;
+        }
+}
 
 }
 
