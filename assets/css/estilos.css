@@ -1,32 +1,31 @@
-.panel-title{
-	font-size: 14px;
-	text-align: center;
-	font-weight: bold;
+.panel-title {
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
 }
-#main{
-        margin-top: 100px;
-}
-
-.u-size-100{
-	width: 100px;
-	text-align: center;
+#main {
+  margin-top: 100px;
 }
 
-.main-form{
-	max-width: 500px;
-	margin: 0 auto;
+.u-size-100 {
+  width: 100px;
+  text-align: center;
 }
 
-.panel-info>.panel-heading{
-	color: #ffffff;
-    background-color: #e95420;
-}
-.main-login{
-	max-width: 300px;
-	margin: 0 auto;
+.main-form {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.footer{
-	margin-top: 100px;
-  
+.panel-info > .panel-heading {
+  color: #ffffff;
+  background-color: #e95420;
+}
+.main-login {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.footer {
+  margin-top: 100px;
 }
