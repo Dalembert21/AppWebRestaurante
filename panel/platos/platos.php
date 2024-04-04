@@ -55,7 +55,47 @@
   </nav>
 
   <div class="container" id="main">
+    <div class ="row">
+      <div class="col-md-12">
+        <div class="pull-right">
+          <a href="registrar.php" class="btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span>Nuevo</a>
+        </div>
+      </div>
+    </div>
 
+    <div class ="row">
+      <div class="col-md-12">
+        <fieldset>
+          <legend>Listado de Platos</legend>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Titulo</th>
+                <th>Categoria</th>
+                <th>Precio</th>
+                <th class="text-center">Foto</th>
+                <th></th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr>
+                 <td>#</td>
+                <td>Plato 1</td>
+                 <td>Seco de Pollo</td>
+                  <td>3</td>
+                   <td class=""text-center>Foto</td>
+                   <td class="text-center">
+                          <a href="" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-trash">Borrar</span></a>
+                          <a href="actualizar.php" class="btn btn-warning btn-sm"> <span class="glyphicon glyphicon-edit">Editar</span></a>
+                   </td>
+              </tr>
+            </tbody>
+          </table>
+        </fieldset>
+
+      </div>
+    </div>
 
   </div> <!-- /container -->
 
