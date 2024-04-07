@@ -34,10 +34,10 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right">
           <li>
-            <a href="pedidos/pedidos.php" class="btn">Pedidos</a>
+            <a href="../pedidos/pedidos.php" class="btn">Pedidos</a>
           </li>
               <li>
-            <a href="platos/platos.php" class="btn">Platos</a>
+            <a href="platos.php" class="btn">Platos</a>
           </li>
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
@@ -54,62 +54,58 @@
     </div>
   </nav>
 
-  <div class="container" id="main" method="../acciones.php" enctype="multipart/form-data">
+  <div class="container" id="main" >
 <div class="row">
     <div class="col-md-12">
       <fieldset > <legend>Datos de los Platos</legend>
-  <form>
-   <div class="row">
-        <div class="col-md-6">
+<form method="POST" action="../acciones.php" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-6">
       <div class="form-group">
-    <label >Titulo</label>
-    <input type="text" class="form-control" name="titulo"required>
+        <label>Titulo</label>
+        <input type="text" class="form-control" name="titulo" required>
+      </div>
+    </div>
   </div>
-        </div>
-   </div>
-     <div class="row">
-        <div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12">
       <div class="form-group">
-    <label >Descripcion</label>
-      <textarea class="form-control" name="descripcion" id="" cols="3" required></textarea>
+        <label>Descripcion</label>
+        <textarea class="form-control" name="descripcion" id="" cols="3" required></textarea>
+      </div>
+    </div>
   </div>
-        </div>
-   </div>
-     <div class="row">
-        <div class="col-md-4">
+  <div class="row">
+    <div class="col-md-4">
       <div class="form-group">
-    <label >Categorias</label>
-        <select  class="form-control"name="categoria_id" id="" required>
-          <option value="">--Seleccione--</option>o
+        <label>Categorias</label>
+        <select class="form-control" name="categoria_id" id="" required>
+          <option value="">--Seleccione--</option>
+          <option value="1">Comida Costeña</option>
         </select>
+      </div>
+    </div>
   </div>
-        </div>
-   </div>
-   <div class="row">
-    <div class="col-md-12">
-  <form>
-   <div class="row">
-        <div class="col-md-4">
+  <div class="row">
+    <div class="col-md-4">
       <div class="form-group">
-    <label >Foto</label>
-    <input type="file" class="form-control" name="foto"required>
+        <label>Foto</label>
+        <input type="file" class="form-control" name="foto" required>
+      </div>
+    </div>
   </div>
-        </div>
-   </div>
-   <div class="row">
-    <div class="col-md-12">
-  <form>
-   <div class="row">
-        <div class="col-md-4">
+  <div class="row">
+    <div class="col-md-4">
       <div class="form-group">
-    <label >Precio</label>
-    <input type="text" class="form-control" name="precio" placeholder="0.00" required>
+        <label>Precio</label>
+        <input type="text" class="form-control" name="precio" placeholder="0.00" required>
+      </div>
+    </div>
   </div>
-        </div>
-   </div>
-  <button type="submit" class="btn btn-info"></span>Registrar</button>
-   <a href="../indexAdmin.php" class="btn btn-default"></span>Cancelar</a>
+  <input type="submit" class="btn btn-info" name="accion" value="Registrar">
+  <a href="../indexAdmin.php" class="btn btn-default">Cancelar</a>
 </form>
+
 
 </fieldset>
     </div>
