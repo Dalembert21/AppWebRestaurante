@@ -37,7 +37,7 @@
             <a href="pedidos.php" class="btn">Pedidos</a>
           </li>
               <li>
-            <a href="../platos/platos.php" class="btn">Platos</a>
+            <a href="../platos/listarPlatos.php" class="btn">Platos</a>
           </li>
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>

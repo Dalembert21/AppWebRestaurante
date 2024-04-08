@@ -1,3 +1,25 @@
+<?php
+require '../../vendor/autoload.php';
+
+if(isset($_GET['id'])&& is_numeric($_GET['id'])){
+        $id = $_GET['id'];
+$platos = new manin\Crud;
+$resultado = $platos->verPorId($id);
+
+if(!$resultado)
+     header('Location: listarPlatos.php');
+}else{
+  header('Location: listarPlatos.php');
+}
+
+
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +59,7 @@
             <a href="../pedidos/pedidos.php" class="btn">Pedidos</a>
           </li>
               <li>
-            <a href="platos.php" class="btn">Platos</a>
+            <a href="listarPlatos.php" class="btn">Platos</a>
           </li>
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
@@ -59,11 +81,12 @@
     <div class="col-md-12">
       <fieldset > <legend>Datos de los Platos</legend>
   <form method="POST" action="../acciones.php" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?php print $resultado['ID_PLA']?>">
    <div class="row">
         <div class="col-md-6">
       <div class="form-group">
     <label >Titulo</label>
-    <input type="text" class="form-control" name="titulo"required>
+    <input value="<?php print $resultado['TITU_PLA']?>" type="text" class="form-control" name="titulo"required>
   </div>
         </div>
    </div>
@@ -71,7 +94,7 @@
         <div class="col-md-12">
       <div class="form-group">
     <label >Descripcion</label>
-      <textarea class="form-control" name="descripcion" id="" cols="3" required></textarea>
+      <textarea class="form-control" name="descripcion" id="" cols="3" required><?php print $resultado['DESC_PLA']?></textarea>
   </div>
         </div>
    </div>
@@ -80,7 +103,8 @@
       <div class="form-group">
     <label >Categorias</label>
         <select  class="form-control"name="categoria_id" id="" required>
-          <option value="">--Seleccione--</option>o
+          <option value="">--Seleccione--</option>
+          <option value="1">Comida de la Region Costa</option>
         </select>
   </div>
         </div>
@@ -92,7 +116,8 @@
         <div class="col-md-4">
       <div class="form-group">
     <label >Foto</label>
-    <input type="file" class="form-control" name="foto"required>
+    <input type="file" class="form-control" name="foto" >
+    <input type="hidden"name="foto_temp" value="<?php print $resultado['FOT_PLA']?>">
   </div>
         </div>
    </div>
@@ -103,11 +128,11 @@
         <div class="col-md-4">
       <div class="form-group">
     <label >Precio</label>
-    <input type="text" class="form-control" name="precio" placeholder="0.00" required>
+    <input value="<?php print $resultado['PRE_PLA']?>" type="text" class="form-control" name="precio" placeholder="0.00" required>
   </div>
         </div>
    </div>
-  <button type="submit" class="btn btn-info"></span>Actualizar</button>
+  <input type="submit" class="btn btn-info" name ="accion" value="Actualizar">
    <a href="../indexAdmin.php" class="btn btn-default"></span>Cancelar</a>
 </form>
 

@@ -37,7 +37,7 @@
             <a href="../pedidos/pedidos.php" class="btn">Pedidos</a>
           </li>
               <li>
-            <a href="platos.php" class="btn">Platos</a>
+            <a href="listarPlatos.php" class="btn">Platos</a>
           </li>
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
@@ -81,7 +81,10 @@
         <label>Categorias</label>
         <select class="form-control" name="categoria_id" id="" required>
           <option value="">--Seleccione--</option>
-          <option value="1">Comida Costeña</option>
+          <option value="1">Comida de la Region Costa</option>
+          <option value="2">Comida de la Region Sierra</option>
+          <option value="3">Comida de la Region Amazonica </option>
+          <option value="4">Platos a la Carta</option>
         </select>
       </div>
     </div>
