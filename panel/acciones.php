@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $respuesta = $platos->registrar($_params);
            //validacion para cuando el registro es correcto se redirija al listado de productos indexAdmin.php
         if($respuesta){
-                     header('Location: platos/platos.php');
+                     header('Location: platos/listarPlatos.php');
         }else{
                 print("Errror al registrar un plato");
         }
@@ -76,6 +76,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     }
 
+  }
+//para eliminar algun valor
+  if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+     //llamo el metodo para eliminar
+      $id=$_GET['id'];
+        $respuesta = $platos->eliminar($id);
+           //validacion para cuando la eliminacion  es correcta se redirija al listado de productos indexAdmin.php
+        if($respuesta){
+                     header('Location: platos/listarPlatos.php');
+        }else{
+                print("Errror al eliminar un plato");
+        }
   }
 
 
