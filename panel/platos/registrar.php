@@ -81,10 +81,19 @@
         <label>Categorias</label>
         <select class="form-control" name="categoria_id" id="" required>
           <option value="">--Seleccione--</option>
-          <option value="1">Comida de la Region Costa</option>
-          <option value="2">Comida de la Region Sierra</option>
-          <option value="3">Comida de la Region Amazonica </option>
-          <option value="4">Platos a la Carta</option>
+         <?php
+               require '../../vendor/autoload.php';
+                  $categoria = new manin\Categorias;
+                  $info_categoria = $categoria->ver(); 
+                  $cantidad = count($info_categoria);
+                  for($x =0;$x < $cantidad; $x++){
+                    $item = $info_categoria[$x];
+                         ?>
+                           <option value=""<?php print $item['ID_CAT']?>"><?php print $item['NOM_CAT']?></option>
+                              <?php
+                  }
+                      ?>
+   
         </select>
       </div>
     </div>
