@@ -17,7 +17,7 @@ class Categorias{
         }
     }
     public function ver(){
-    $sql =  " SELECT  ID_PLA, TITU_PLA, DESC_PLA, FOT_PLA,NOM_CAT, PRE_PLA,FECHA,EST_PLA FROM platos INNER JOIN categorias ON platos.CAT_ID_PER = categorias.ID_CAT ORDER BY platos.ID_PLA DESC";
+    $sql =  " SELECT * FROM `categorias`";
    $resultado = $this->cn->prepare($sql);
         if($resultado->execute()){
           return $resultado->fetchAll();
