@@ -83,3 +83,15 @@
 .iniciarSesion:hover {
   background-color: rgb(255, 255, 255, 0.5);
 }
+
+#tituloPelicula {
+  font-size: 15px;
+  margin: 0%;
+  font-weight: bold;
+}
+
+.card-image {
+  width: 100%; /* Establece el ancho al 100% del contenedor */
+  height: 200px; /* Establece la altura a 200px */
+  object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+}

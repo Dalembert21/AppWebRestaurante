@@ -104,20 +104,22 @@ if(!$resultado)
     <label >Categorias</label>
         <select  class="form-control"name="categoria_id" id="" required>
           <option value="">--Seleccione--</option>
-                   <?php
-               require '../../vendor/autoload.php';
+            <?php
+                  require '../../vendor/autoload.php';
                   $categoria = new manin\Categorias;
                   $info_categoria = $categoria->ver(); 
                   $cantidad = count($info_categoria);
-                  for($x =0;$x < $cantidad; $x++){
-                    $item = $info_categoria[$x];
-                         ?>
-                           <option value=""<?php print $item['ID_CAT']?>"
-                           <?php print $resultado['CAT_ID_PER'] == $item['ID_CAT'] ?'selected': ''  ?>
-                           ><?php print $item['NOM_CAT']?></option>
-                              <?php
+                  for($x = 0; $x < $cantidad; $x++) {
+                      $item = $info_categoria[$x];
+                  ?>
+                      <option value="<?php print $item['ID_CAT']?>"
+                          <?php print $resultado['CAT_ID_PER'] == $item['ID_CAT'] ? 'selected' : ''; ?>>
+                          <?php print $item['NOM_CAT']?>
+                      </option>
+                  <?php
                   }
-                      ?>option>
+                  ?>
+
         </select>
   </div>
         </div>
@@ -145,6 +147,7 @@ if(!$resultado)
   </div>
         </div>
    </div>
+  
   <input type="submit" class="btn btn-info" name ="accion" value="Actualizar">
    <a href="../indexAdmin.php" class="btn btn-default"></span>Cancelar</a>
 </form>

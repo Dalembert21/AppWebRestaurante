@@ -81,7 +81,7 @@
         <label>Categorias</label>
         <select class="form-control" name="categoria_id" id="" required>
           <option value="">--Seleccione--</option>
-         <?php
+          <?php
                require '../../vendor/autoload.php';
                   $categoria = new manin\Categorias;
                   $info_categoria = $categoria->ver(); 
@@ -89,10 +89,13 @@
                   for($x =0;$x < $cantidad; $x++){
                     $item = $info_categoria[$x];
                          ?>
-                           <option value=""<?php print $item['ID_CAT']?>"><?php print $item['NOM_CAT']?></option>
+                            <option value="<?php print $item['ID_CAT']?>"><?php print $item['NOM_CAT']?></option>
                               <?php
                   }
                       ?>
+
+          
+       
    
         </select>
       </div>

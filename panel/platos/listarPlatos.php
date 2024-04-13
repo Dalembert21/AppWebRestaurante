@@ -67,15 +67,15 @@
       <div class="col-md-12">
         <fieldset>
           <legend>Listado de Platos</legend>
-          <table class="table table-bordered">
-            <thead>
+          <table class="table table-bordered" id="opciones">
+            <thead class="opciones">
               <tr>
                 <th> N.º</th>
                 <th>Titulo</th>
                 <th>Categoria</th>
                 <th>Precio</th>
                 <th class="text-center">Foto</th>
-                <th></th>
+                <th class="text-center">Opciones</th>
               </tr>
 
             </thead>
@@ -112,9 +112,9 @@
                
                    </td>
                    <td class="text-center">
-                          <a href="../acciones.php?id=<?php echo $item['ID_PLA']; ?>" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-trash">Borrar</span></a>
+                          <a href="../acciones.php?id=<?php echo $item['ID_PLA']; ?>" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-trash"> Borrar</span></a>
                          <a href="actualizar.php?id=<?php echo $item['ID_PLA']; ?>" class="btn btn-warning btn-sm">
-                    <span class="glyphicon glyphicon-edit"></span> Editar
+                    <span class="glyphicon glyphicon-edit"> Editar</span>
                   </a>
 
                    </td>

@@ -14,6 +14,7 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/estilos.css">
+   <link rel="stylesheet" href="assets/css/miEstilo.css">
 </head>
 
 <body>
@@ -40,14 +41,49 @@
       </div><!--/.nav-collapse -->
     </div>
   </nav>
+<div class="container" id="main">
+    <div class="row">
+        <?php
+            require './vendor/autoload.php';
+            $platos = new manin\Crud;
+            $info_platos  = $platos->ver();
+            $cantidad = count($info_platos);
+            if ($cantidad > 0) {
+                for ($x = 0; $x < $cantidad; $x++) {
+                    $item = $info_platos[$x];
+        ?>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="text-center" id="tituloPelicula"><?php print $item['TITU_PLA'] ?></h1>
+                </div>
+                <div class="panel-body">
+                    <?php
+                        $foto = 'assets/temporales/' . $item['FOT_PLA'];
+                        if (file_exists($foto)) {
+                    ?>
+                    <img src="<?php print($foto); ?>" class="img-responsive card-image">
+                    <?php } else { ?>
+                    <img src="assets/imagenes/not-found.jpg" class="img-responsive card-image">
+                    <?php } ?>
+                </div>
+                <div class="panel-footer">
+                   <a href="carrito.php?id=<?php print $item['ID_PLA'] ?>" class="btn btn-primary btn-block">
+                    <span class="glyphicon glyphicon-shopping-cart "> Comprar</span>
+                  </a>
+                </div>
+            </div>
+        </div>
+        <?php
+                }
+            } else {
+        ?>
+        <h4>No hay registros</h4>
+        <?php } ?>
+    </div>
+</div> <!-- /container -->
 
-  <div class="container" id="main">
-    <?php
-      require 'vendor/autoload.php';
-      $platos  = new manin\Platos;
-      ?>
 
-  </div> <!-- /container -->
 
 
   <!-- Bootstrap core JavaScript
