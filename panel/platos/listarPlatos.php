@@ -58,7 +58,7 @@
     <div class ="row">
       <div class="col-md-12">
         <div class="pull-right">
-          <a href="registrar.php" class="btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span>Nuevo</a>
+          <a href="registrar.php" class="btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
         </div>
       </div>
     </div>
