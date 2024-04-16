@@ -53,7 +53,7 @@
       </div><!--/.nav-collapse -->
     </div>
   </nav>
-
+<!---creacion del boton nuevo---->
   <div class="container" id="main">
     <div class ="row">
       <div class="col-md-12">
@@ -62,7 +62,7 @@
         </div>
       </div>
     </div>
-
+<!---TABLA DE PLATOS-->
     <div class ="row">
       <div class="col-md-12">
         <fieldset>
@@ -79,16 +79,19 @@
               </tr>
 
             </thead>
+            <!---CUERPO DE LA TABLA----->
             <tbody>
             
               <?php
                 require '../../vendor/autoload.php';
                   $platos = new manin\Crud;
-
+                    //creo una variable para almacenar todas las peliculas
                   $info_platos = $platos->ver();
+                  //compruebo cuantos registros hay en la bd
                   $cantidad = count($info_platos);
                      $contador=0;
                   if($cantidad>0){
+                    //recorro el arreglo
                     for($i=0;$i<$cantidad;$i++){
                       $contador++;
                       $item=$info_platos[$i];

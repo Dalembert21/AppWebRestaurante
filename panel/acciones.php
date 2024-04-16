@@ -2,7 +2,7 @@
 require '../vendor/autoload.php';
 
 $platos = new manin\Crud;
-
+//solo funciona si viene por el metodo post
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_POST['accion'] === 'Registrar') {
         // Verifico si los campos están vacíos o no 

@@ -42,7 +42,7 @@
 
       // Verificar credenciales estáticas
       if (correo === "admin" && clave === "123") {
-        window.location.href = "platos/listarPlatos.php";
+        window.location.href = "indexAdmin.php";
       } else {
         alert("Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.");
       }
