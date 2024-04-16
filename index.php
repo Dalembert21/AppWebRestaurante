@@ -69,7 +69,7 @@
                 </div>
                 <div class="panel-footer">
                    <a href="carrito.php?id=<?php print $item['ID_PLA'] ?>" class="btn btn-primary btn-block">
-                    <span class="glyphicon glyphicon-shopping-cart "> Comprar</span>
+                    <span class="glyphicon glyphicon-shopping-cart "> </span> Comprar
                   </a>
                 </div>
             </div>
