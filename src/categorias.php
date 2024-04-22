@@ -16,6 +16,8 @@ class Categorias{
 
         }
     }
+    
+    //funcion para mostrar todas las categorias
     public function ver(){
     $sql =  " SELECT * FROM `categorias`";
    $resultado = $this->cn->prepare($sql);

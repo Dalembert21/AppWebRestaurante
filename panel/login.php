@@ -14,9 +14,12 @@
   <link rel="stylesheet" href="../assets/css/miEstilo.css">
 </head>
 
+
+
 <body class="login">
+  
   <section class="centroLoginS">
-    <form>
+    <form class="" action="login.php" method="post">
       <h1 class="tituloLogin">Restaurante Manin</h1>
       <div class="cuadrosSesion">
         <input type="email" class="correo" id="correoElectronico">

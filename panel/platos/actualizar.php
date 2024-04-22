@@ -1,9 +1,10 @@
 <?php
 require '../../vendor/autoload.php';
-
+//verfico si el metodo viene por get y tambien si el valor es numerico
 if(isset($_GET['id'])&& is_numeric($_GET['id'])){
         $id = $_GET['id'];
 $platos = new manin\Crud;
+//muestro el plato por id segun el CRUD establecido
 $resultado = $platos->verPorId($id);
 
 if(!$resultado)
@@ -130,6 +131,7 @@ if(!$resultado)
    <div class="row">
         <div class="col-md-4">
       <div class="form-group">
+        <!---Guardo la foto en otro input para traer el dato al querer actualizar-->
     <label >Foto</label>
     <input type="file" class="form-control" name="foto" >
     <input type="hidden"name="foto_temp" value="<?php print $resultado['FOT_PLA']?>">

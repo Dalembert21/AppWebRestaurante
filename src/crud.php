@@ -6,6 +6,7 @@ class Crud{
   private $configuracion;
   private $cn = null;
 
+    //constructor que me permite conectar a la BD 
     public function __construct() {
         // Referencia al archivo config.ini, por el parse_ini_file directorio raiz
         $this->configuracion = parse_ini_file(__DIR__.'/../config.ini');
@@ -21,17 +22,17 @@ class Crud{
     }
 //registrar los platos
 public function registrar($_params) {
-    // Verificar si los índices existen en el array $_params
+    // Verificar si los índices existen en el array $_params donde tomo todos los valores para registrar
     if (!isset($_params['TITULO_PLA'], $_params['DESC_PLA'], $_params['FOT_PLA'], $_params['PRE_PLA'], $_params['CAT_ID_PER'], $_params['FECHA'])) {
         // Si algun campo falla presenta el error 
         echo "Faltan algunos datos necesarios para registrar el plato.";
         return false;
     }
 
-    // Prepara la consulta SQL
+    // Preparo la consulta SQL
     $sql = "INSERT INTO `platos`(`TITU_PLA`, `DESC_PLA`, `FOT_PLA`, `PRE_PLA`, `CAT_ID_PER`, `FECHA`) VALUES (:TITU_PLA, :DESC_PLA, :FOT_PLA, :PRE_PLA, :CAT_ID_PER, :FECHA)";
 
-    // Prepara los valores a insertar en la consulta
+    // Preparo los valores a insertar en la consulta
     $resultado = $this->cn->prepare($sql);
     $_array = array(
         ":TITU_PLA" => $_params['TITULO_PLA'],
@@ -95,6 +96,7 @@ public function eliminar($id){
 //para poder ver todos los platos es decir el listado general
 //estan relacionadas las tablas categoria  y platos
 //tienen en comun id platos con cat_id_per de categorias
+//la consulta que hago es inner join para relacion entre tablas 
 public function ver(){
     $sql =  " SELECT  ID_PLA, TITU_PLA, DESC_PLA, FOT_PLA,NOM_CAT, PRE_PLA,FECHA,EST_PLA FROM platos INNER JOIN categorias ON platos.CAT_ID_PER = categorias.ID_CAT ORDER BY platos.ID_PLA DESC";
    $resultado = $this->cn->prepare($sql);
@@ -107,7 +109,7 @@ public function ver(){
         }
 }
 
-//
+//mostrar el id para seleccionar solo un plato para saber sus datos
 public function verPorId($id){
   $sql =  "SELECT * FROM `platos` WHERE `ID_PLA` = :ID_PLA ";
   $resultado = $this->cn->prepare($sql);
@@ -118,7 +120,7 @@ public function verPorId($id){
   if($resultado->execute($_array)){
     return $resultado->fetch();
   } else {
-    print("UPS!! Sucedió algún error al traer datos");
+    print("UPS!! Sucedió algún error al traer el plato que seleccionaste");
     return false;
   }
 }

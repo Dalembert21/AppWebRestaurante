@@ -90,8 +90,9 @@
                   //compruebo cuantos registros hay en la bd
                   $cantidad = count($info_platos);
                      $contador=0;
+                     //si  cantidad es mayor a cero me devuelve toda la informacion de los platos
                   if($cantidad>0){
-                    //recorro el arreglo
+                    //recorro el arreglo para mostrar mis items
                     for($i=0;$i<$cantidad;$i++){
                       $contador++;
                       $item=$info_platos[$i];
@@ -104,7 +105,9 @@
                   <td><?php print $item['PRE_PLA']?></td>
                    <td class=""text-center>
                     <?php
+                      //accedo a la carpeta para leer fotos
                       $foto='../../assets/temporales/'.$item['FOT_PLA'];
+                      //si existe la foto la mostrara 
                       if(file_exists($foto)){
                                          ?>
                                          <img src="<?php print($foto);?>" alt="" width="50">
@@ -116,6 +119,8 @@
                    </td>
                    <td class="text-center">
                           <a href="../acciones.php?id=<?php echo $item['ID_PLA']; ?>" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-trash"> Borrar</span></a>
+                          <!--Mediante el id de la foto puedo actualizar un plato en especifico-->
+                          
                          <a href="actualizar.php?id=<?php echo $item['ID_PLA']; ?>" class="btn btn-warning btn-sm">
                     <span class="glyphicon glyphicon-edit"> Editar</span>
                   </a>
