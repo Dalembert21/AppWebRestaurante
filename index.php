@@ -41,6 +41,7 @@
       </div><!--/.nav-collapse -->
     </div>
   </nav>
+  <!--Muestro los platos disponibles a los clientes-->
 <div class="container" id="main">
     <div class="row">
         <?php

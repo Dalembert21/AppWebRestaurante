@@ -1,9 +1,8 @@
 <?php
-
-
-          //activo las sesiones en php
+          //activo las sesiones en php para usar mientras navego en las paginas
           session_start();
         require 'funciones.php';
+        //obtengo por la URL el tipo id
         if(isset($_GET['id'])  && is_numeric($_GET['id']) ){
                $id = $_GET['id'];
                require 'vendor/autoload.php';
@@ -13,28 +12,33 @@
                 if(!$resultado)
                    header('Location: index.php'); //controlo  mediante el id que si no existe me redirija al index.html de los platos
                   agregarPlato($resultado , $id);
-                  ///validacion si el usuario no ha interactuado con el carrito
-              if(array_key_exists($id,$_SESSION['carrito'])) {
-    // Obtener la cantidad actual del plato en el carrito
-    $cantidad_actual = $_SESSION['carrito'][$id]['cantidad'];
-    // Actualizar el plato con una cantidad aumentada
-    actualizarPlato($id, $cantidad_actual + 1);
-} else {
-    // Si no existe el plato en el carrito, agregarlo
-    agregarPlato($resultado, $id);
-}
+                  //si el carrito existe
+                  if(isset($_SESSION['carrito'])){ 
+                          //si el plato existe en el carrito 
+                          if(array_key_exists($id,$_SESSION['carrito'])){
+                          
+                          }else{
+                            //si el plato no existe en el carrito
+                              agregarPlato($resultado,$id);
+                          }
+
+                                  } else {
+                                    //si el carrito no existe
+                                    agregarPlato($resultado,$id);
+
+                    }
+                                              
+
+                                          print('<pre>');
+                                          print_r($_SESSION['carrito']);
+                                          die;
+
+                                      
+                                      
+                            }
 
 
-                  print '<pre>';
-                  print_r($_SESSION['carrito']);
-                  die;
-
-                  
-                  
-        }
-
-
-?>
+                    ?>
 
 <!DOCTYPE html>
 <html lang="en">
