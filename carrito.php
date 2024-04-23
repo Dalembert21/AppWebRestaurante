@@ -29,9 +29,7 @@
                     }
                                               
 
-                                          print('<pre>');
-                                          print_r($_SESSION['carrito']);
-                                          die;
+                                     
 
                                       
                                       
@@ -77,13 +75,94 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right">
           <li>
-            <a href="" class="btn">Carrito <span class="badge">0</span></a>
+           <a href="#" class="btn"> <span class="glyphicon glyphicon-shopping-cart"></span> Carrito<span class="badge"><?php echo cantidadPlatos(); ?></span></a>
+
+
           </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
   </nav>
 <div class="container" id="main">
+
+  <table class="table table-bordered table-hover" id="opciones">
+            <thead class="opciones">
+              <tr>
+                <th> N.º</th>
+                 <th>Plato</th>
+                  <th>Foto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th class="">Opciones</th>
+              </tr>
+
+            </thead>
+            <!---CUERPO DE LA TABLA PARA MOSTRAR TODOS LOS PRODUCTOS DEL CARRITO----->
+            <tbody>
+                            <?php
+                                  if(isset($_SESSION['carrito'])&& !empty($_SESSION['carrito'])){
+                                    $total=0;
+                                    $c=0;
+                                    foreach($_SESSION['carrito'] as $indice =>$value){
+                                      $c++;
+                                      $total = $value['precio'] * $value['cantidad'];
+                                  
+                            ?>
+                              <form action="actualizarCarrito.php" method="post">
+                                              <tr>
+                                                  <td><?php print $c ?></td>
+                                                <td><?php print $value['titulo'] ?></td>
+                                                <td>      <?php
+                                                                  $foto = 'assets/temporales/' . $value['foto'];
+                                                                  if (file_exists($foto)) {
+                                                              ?>
+                                                              <img src="<?php print($foto); ?>" width="35">
+                                                              <?php } else { ?>
+                                                              <img src="assets/imagenes/not-found.jpg" width="35">
+                                                              <?php } ?>
+                                                </td>
+                                                    <td><?php print $value['precio'] ?>
+                                                  </td>
+                                                  <td>
+                                                      <input type="hidden" name="id" value="<?php  print $value['id']  ?>">
+                                                    <input type="text" name="cantidad" class="form-control u-size-100" value="<?php  print $value['cantidad']  ?>">
+                                                  </td>
+                                                    <td>$<?php print ($total) ?>
+                                                  </td>
+                                                  <td>
+                                                        <button type="submit" class="btn-success btn-xs">
+                                                          <span class="glyphicon glyphicon-refresh"> </span> Actualizar
+                                                        </button>
+                                                          <a href="eliminarCarrito.php?id=<?php print $value['id']  ?>" class="btn btn-danger btn-xs">
+                                                          <span class="glyphicon glyphicon-trash"> </span> Borrar
+                                                        </a>
+                                                  </td>
+                                    </form>
+                                   
+                                </tr>
+
+                            <?php
+                                    }
+                                  }else{
+                            ?>
+                            <tr>
+                              <td colspan="7">No hay productos en el carrito</td>
+                            </tr>
+
+                            <?php
+                                  }
+
+                            ?>  
+            </tbody>
+            <tfoot>
+                    <tr>
+                      <td colspan="5" class="text-right">TOTAL =</td>
+                      <td>$<?php  print calcularTotal();?></td>
+                      <td></td>
+                    </tr>
+            </tfoot>
+            </table>
     
 </div> <!-- /container -->
 
