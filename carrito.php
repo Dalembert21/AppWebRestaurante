@@ -163,6 +163,22 @@
                     </tr>
             </tfoot>
             </table>
+            <hr>
+            <!--BOTONES PARA SEGUIR COMPRANDO O HACER EL PEDIDO-->
+            <?php
+              if(isset($_SESSION['carrito'])&& !empty($_SESSION['carrito'])){
+               ?>
+              <div class="row">
+                <div class="pull-left">
+                  <a href="index.php" class="btn btn-info">Seguir  Comprando</a>
+                </div>
+                <div class="pull-right">
+                  <a href="finalizarCompra.php" class="btn btn-success">Finalizar Compra</a>
+                </div>
+              </div>
+           <?php
+              }
+            ?>
     
 </div> <!-- /container -->
 
