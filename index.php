@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  require 'funciones.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +39,8 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right">
           <li>
-            <a href="" class="btn">Carrito <span class="badge">0</span></a>
+              <a href="carrito.php" class="btn"> <span class="glyphicon glyphicon-shopping-cart"></span> Carrito <span class="badge"><?php echo cantidadPlatos(); ?></span></a>
+
           </li>
         </ul>
       </div><!--/.nav-collapse -->
