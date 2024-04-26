@@ -18,7 +18,7 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/estilos.css">
-   <link rel="stylesheet" href="assets/css/miEstilo.css">
+  <link rel="stylesheet" href="assets/css/miEstilo.css">
 </head>
 
 <body>
@@ -39,58 +39,57 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right">
           <li>
-              <a href="carrito.php" class="btn"> <span class="glyphicon glyphicon-shopping-cart"></span> Carrito <span class="badge"><?php echo cantidadPlatos(); ?></span></a>
-
+            <a href="carrito.php" class="btn">
+              <span class="glyphicon glyphicon-shopping-cart"></span> Carrito
+              <span class="badge"><?php echo cantidadPlatos(); ?></span>
+            </a>
           </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
   </nav>
-  <!--Muestro los platos disponibles a los clientes-->
-<div class="container" id="main">
+  <!-- Muestro los platos disponibles a los clientes -->
+  <div class="container" id="main">
     <div class="row">
-        <?php
-            require './vendor/autoload.php';
-            $platos = new manin\Crud;
-            $info_platos  = $platos->ver();
-            $cantidad = count($info_platos);
-            if ($cantidad > 0) {
-                for ($x = 0; $x < $cantidad; $x++) {
-                    $item = $info_platos[$x];
-        ?>
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h1 class="text-center" id="tituloPelicula"><?php print $item['TITU_PLA'] ?></h1>
-                </div>
-                <div class="panel-body">
-                    <?php
-                        $foto = 'assets/temporales/' . $item['FOT_PLA'];
-                        if (file_exists($foto)) {
-                    ?>
-                    <img src="<?php print($foto); ?>" class="img-responsive card-image">
-                    <?php } else { ?>
-                    <img src="assets/imagenes/not-found.jpg" class="img-responsive card-image">
-                    <?php } ?>
-                </div>
-                <div class="panel-footer">
-                   <a href="carrito.php?id=<?php print $item['ID_PLA'] ?>" class="btn btn-primary btn-block">
-                    <span class="glyphicon glyphicon-shopping-cart "> </span> Comprar
-                  </a>
-                </div>
-            </div>
+      <?php
+        require './vendor/autoload.php';
+        $platos = new manin\Crud;
+        $info_platos  = $platos->ver();
+        $cantidad = count($info_platos);
+        if ($cantidad > 0) {
+          for ($x = 0; $x < $cantidad; $x++) {
+            $item = $info_platos[$x];
+      ?>
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="text-center" id="tituloPelicula"><?php echo $item['TITU_PLA']; ?></h1>
+          </div>
+          <div class="panel-body">
+            <?php
+              $foto = 'assets/temporales/' . $item['FOT_PLA'];
+              if (file_exists($foto)) {
+            ?>
+            <img src="<?php echo $foto; ?>" class="img-responsive card-image">
+            <?php } else { ?>
+            <img src="assets/imagenes/not-found.jpg" class="img-responsive card-image">
+            <?php } ?>
+          </div>
+          <div class="panel-footer">
+            <a href="carrito.php?id=<?php echo $item['ID_PLA']; ?>&precio=<?php echo $item['PRE_PLA']; ?>" class="btn btn-primary btn-block">
+              <span class="glyphicon glyphicon-shopping-cart"></span> Comprar <?php echo $item['PRE_PLA']; ?> USD
+            </a>
+          </div>
         </div>
-        <?php
-                }
-            } else {
-        ?>
-        <h4>No hay registros</h4>
-        <?php } ?>
+      </div>
+      <?php
+          }
+        } else {
+      ?>
+      <h4>No hay registros</h4>
+      <?php } ?>
     </div>
-</div> <!-- /container -->
-
-
-
+  </div> <!-- /container -->
 
   <!-- Bootstrap core JavaScript
     ================================================== -->

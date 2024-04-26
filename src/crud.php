@@ -29,7 +29,7 @@ public function registrar($_params) {
         return false;
     }
 
-    // Preparo la consulta SQL
+    // Preparo la consulta SQL para registrar un Plato
     $sql = "INSERT INTO `platos`(`TITU_PLA`, `DESC_PLA`, `FOT_PLA`, `PRE_PLA`, `CAT_ID_PER`, `FECHA`) VALUES (:TITU_PLA, :DESC_PLA, :FOT_PLA, :PRE_PLA, :CAT_ID_PER, :FECHA)";
 
     // Preparo los valores a insertar en la consulta
