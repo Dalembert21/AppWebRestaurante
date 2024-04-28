@@ -1,4 +1,12 @@
 <?php
+session_start();
+// Validar si existe la sesión y controlar que no ingrese
+if (!isset($_SESSION['usuario_info']) || empty($_SESSION['usuario_info'])) {
+    header('Location: ../index.php');
+    exit; // Termina la ejecución del script después de la redirección
+}
+
+
 require '../../vendor/autoload.php';
 //verfico si el metodo viene por get y tambien si el valor es numerico
 if(isset($_GET['id'])&& is_numeric($_GET['id'])){
@@ -63,9 +71,9 @@ if(!$resultado)
             <a href="listarPlatos.php" class="btn">Platos</a>
           </li>
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php   print $_SESSION['usuario_info'] ['nombreUsuario'] ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Cerrar Sesión</a></li>
+            <li><a href="../cerrarSesion.php">Cerrar Sesión</a></li>
           </ul>
         </li>
         </ul>

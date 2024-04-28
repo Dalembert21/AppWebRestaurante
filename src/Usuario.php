@@ -22,7 +22,8 @@ class Usuario{
     }
 //
     public function login($nombre,$clave){
-  $sql =  "SELECT  NOM_USU FROM `usuarios` WHERE NOM_USU=:nombre AND CLAVE_USU=:clave";
+ $sql = "SELECT NOM_USU AS usuario FROM usuarios WHERE NOM_USU = :nombre AND CLAVE_USU = :clave";
+;
   $resultado = $this->cn->prepare($sql);
   $_array = array(
     ":nombre"=> $nombre,

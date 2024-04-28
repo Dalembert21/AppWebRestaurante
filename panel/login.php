@@ -8,6 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Condición para cuando el inicio de sesión es exitoso
     if ($resultado) {
+        session_start();
+
+        $_SESSION['usuario_info'] = array(
+          'nombreUsuario' => $resultado['usuario'],
+          'estado' => 1
+        );
         header('Location: indexAdmin.php');
         exit; // Termina la ejecución del script después de la redirección
     } else {
