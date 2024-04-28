@@ -68,5 +68,87 @@ public function registrarDetallePedido($_params) {
         return false;
     }
 }
+
+public function mostrarPedido() {
+    $sql = "SELECT 
+                p.ID_PEDI,
+                c.NOM_CLIE,
+                c.APE_CLIE,
+                c.CORREO_CLIE,
+                p.TOTA_PEDI,
+                p.FECHA_PEDI
+            FROM 
+                pedidos p
+            INNER JOIN
+                clientes c ON p.ID_CLIE_PER = c.ID_CLIE
+            ORDER BY 
+                p.ID_PEDI DESC";
+
+    $resultado = $this->cn->prepare($sql);
+    if ($resultado->execute()) {
+        return $resultado->fetchAll();
+    } else {
+        echo "Tuve un error para mostrar el pedido.";
+        return false;
+    }
+}
+//visualizar el pedido en ver.php
+public function mostrarPorIdPedido($id){
+          $sql = "SELECT 
+                p.ID_PEDI,
+                c.NOM_CLIE,
+                c.APE_CLIE,
+                c.CORREO_CLIE,
+                p.TOTA_PEDI,
+                p.FECHA_PEDI
+            FROM 
+                pedidos p
+            INNER JOIN
+                clientes c ON p.ID_CLIE_PER = c.ID_CLIE
+            WHERE p.ID_PEDI = :id ";
+
+    $resultado = $this->cn->prepare($sql);
+
+    $_array = array(
+          ':id' => $id
+    );
+    
+
+    if ($resultado->execute($_array)) {
+        return $resultado->fetch();
+    } else {
+        echo "Tuve un error para mostrar el pedido.";
+        return false;
+    }
+
+}
+
+public function mostrarDetallePorIdPedido($id) {
+    $sql = "  SELECT dp.ID_DETA,
+	       p.TITU_PLA,
+         dp.PRECIO_DETA,
+         dp.CANTI_DETA,
+         p.FOT_PLA
+	  FROM detallepedido dp
+	  INNER JOIN platos p ON p.ID_PLA = dp.ID_PLAT_PER
+          WHERE dp.ID_PEDI_PER =:id";
+
+    $resultado = $this->cn->prepare($sql);
+        $_array = array(
+          ':id' => $id
+    );
+   
+    
+    if ($resultado->execute($_array)) {
+        return $resultado->fetchAll();
+    } else {
+        echo "Tuve un error para mostrar el pedido.";
+        return false;
+    }
+}
+
+
+
+
 }
 ?>
