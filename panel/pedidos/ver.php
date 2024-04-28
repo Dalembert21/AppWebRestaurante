@@ -155,10 +155,10 @@
           
           </fieldset>
           <div class="pull-left">
-            <a href="pedidos.php" class="btn btn-default">Cancelar</a>
+            <a href="pedidos.php" class="btn btn-default hidden-print">Cancelar</a>
           </div>
              <div class="pull-right">
-            <a href="javascript:;" id="btnImprimir"class="btn btn-danger">Imprimir</a>
+            <a href="javascript:;" id="btnImprimir"class="btn btn-danger hidden-print">Imprimir</a>
           </div>
           
       </div>
@@ -171,6 +171,15 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="../../assets/js/jquery.min.js"></script>
   <script src="../../assets/js/bootstrap.min.js"></script>
+    <script>
+        // Función para imprimir cuando se hace clic en el botón
+        function imprimir() {
+            window.print();
+        }
+
+        // Asignar la función al evento clic del botón
+        document.getElementById('btnImprimir').addEventListener('click', imprimir);
+    </script>
 
 </body>
 
