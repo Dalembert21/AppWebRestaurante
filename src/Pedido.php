@@ -146,6 +146,30 @@ public function mostrarDetallePorIdPedido($id) {
         return false;
     }
 }
+//mostar en el indexAdmin.php
+public function mostrarUltimos() {
+    $sql = "SELECT 
+                p.ID_PEDI,
+                c.NOM_CLIE,
+                c.APE_CLIE,
+                c.CORREO_CLIE,
+                p.TOTA_PEDI,
+                p.FECHA_PEDI
+            FROM 
+                pedidos p
+            INNER JOIN
+                clientes c ON p.ID_CLIE_PER = c.ID_CLIE
+            ORDER BY 
+                p.ID_PEDI DESC LIMIT 10";
+
+    $resultado = $this->cn->prepare($sql);
+    if ($resultado->execute()) {
+        return $resultado->fetchAll();
+    } else {
+        echo "Tuve un error para mostrar el pedido.";
+        return false;
+    }
+}
 
 
 
