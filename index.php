@@ -2,6 +2,7 @@
   session_start();
   require 'funciones.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +10,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
-
   <title>Manin Restaurante</title>
 
   <!-- Latest compiled and minified CSS -->
@@ -48,17 +47,29 @@
       </div><!--/.nav-collapse -->
     </div>
   </nav>
-  <!-- Muestro los platos disponibles a los clientes -->
+
   <div class="container" id="main">
     <div class="row">
       <?php
         require './vendor/autoload.php';
         $platos = new manin\Crud;
-        $info_platos  = $platos->ver();
-        $cantidad = count($info_platos);
-        if ($cantidad > 0) {
-          for ($x = 0; $x < $cantidad; $x++) {
-            $item = $info_platos[$x];
+
+        // Parámetros del paginador
+        $platosPorPagina = 8; // Cantidad de platos por página
+        $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1; // Página actual, si no se especifica, es la primera
+
+        // Calcular el offset
+        $offset = ($pagina - 1) * $platosPorPagina;
+
+        // Consultar platos para la página actual
+        $info_platos = $platos->verPaginado($platosPorPagina, $offset);
+
+        // Calcular cantidad total de páginas
+        $totalPlatos = $platos->contarPlatos();
+        $totalPaginas = ceil($totalPlatos / $platosPorPagina);
+
+        if ($totalPlatos > 0) {
+          foreach ($info_platos as $item) {
       ?>
       <div class="col-md-3">
         <div class="panel panel-default">
@@ -89,14 +100,26 @@
       <h4>No hay registros</h4>
       <?php } ?>
     </div>
-  </div> <!-- /container -->
 
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Agregar el paginador -->
+    <div class="text-center">
+      <ul class="pagination">
+        <?php if ($pagina > 1): ?>
+          <li><a href="?pagina=<?php echo $pagina - 1; ?>">&laquo;</a></li>
+        <?php endif; ?>
+        <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+          <li <?php echo ($pagina == $i) ? 'class="active"' : ''; ?>><a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+        <?php endfor; ?>
+        <?php if ($pagina < $totalPaginas): ?>
+          <li><a href="?pagina=<?php echo $pagina + 1; ?>">&raquo;</a></li>
+        <?php endif; ?>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

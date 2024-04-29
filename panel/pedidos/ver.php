@@ -18,6 +18,7 @@ if (!isset($_SESSION['usuario_info']) || empty($_SESSION['usuario_info'])) {
   <meta name="author" content="">
 
   <title>Manin Restaurante</title>
+  
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
@@ -152,11 +153,11 @@ if (!isset($_SESSION['usuario_info']) || empty($_SESSION['usuario_info'])) {
               ?>
             </tbody>
           </table>
-          <div class="col-md-3">
-                 <div class="form-group">
-                      <label for="">Total de Compra</label>
-                      <input type="text" class="form-control" value="<?php   print $info_pedido['TOTA_PEDI'];  ?>" readonly> 
-            </div>
+          <div class="col-md-3 pull-right">
+            <div class="form-group">
+            <label for="">Total de Compra</label>
+            <input type="text" class="form-control" value="<?php echo '$' . $info_pedido['TOTA_PEDI']; ?>" readonly> 
+        </div>
           </div>
           
           

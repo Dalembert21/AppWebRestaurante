@@ -125,6 +125,37 @@ public function verPorId($id){
   }
 }
 
+ // Método para obtener una página de platos
+    public function verPaginado($platosPorPagina, $offset) {
+        $sql = "SELECT ID_PLA, TITU_PLA, DESC_PLA, FOT_PLA, NOM_CAT, PRE_PLA, FECHA, EST_PLA FROM platos INNER JOIN categorias ON platos.CAT_ID_PER = categorias.ID_CAT ORDER BY platos.ID_PLA DESC LIMIT :platosPorPagina OFFSET :offset";
+        
+        $resultado = $this->cn->prepare($sql);
+        $resultado->bindValue(':platosPorPagina', (int)$platosPorPagina, \PDO::PARAM_INT);
+        $resultado->bindValue(':offset', (int)$offset, \PDO::PARAM_INT);
+        
+        if ($resultado->execute()) {
+            return $resultado->fetchAll();
+        } else {
+            echo "Hubo un error al obtener la página de platos.";
+            return false;
+        }
+    }
+
+    // Método para contar la cantidad total de platos
+    public function contarPlatos() {
+        $sql = "SELECT COUNT(*) AS total FROM platos";
+        
+        $resultado = $this->cn->prepare($sql);
+        
+        if ($resultado->execute()) {
+            $row = $resultado->fetch(\PDO::FETCH_ASSOC);
+            return $row['total'];
+        } else {
+            echo "Hubo un error al contar los platos.";
+            return false;
+        }
+    }
+
 }
 
 ?>

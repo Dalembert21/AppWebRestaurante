@@ -76,6 +76,7 @@
                             <textarea name="comentario" rows="4" class="form-control"></textarea>
                         </div>
                         <button class="btn btn-primary btn-block" type="submit">Enviar</button>
+                        <a href="index.php">Seguir comprando ?</a>
                     </form>
                 </fieldset>
             </div>
